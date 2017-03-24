@@ -32,6 +32,11 @@ public class CyclicNumberTest {
   public void wellKnownDemoninators() {
     // from https://en.wikipedia.org/wiki/Cyclic_number
      List<Integer> demoniators = Arrays.asList(7,17,19,23, 29, 47, 59, 61, 97);
+    demoniators.stream().forEach(demoniator -> {
+      CyclicNumber cn = new CyclicNumber();
+      cn.setDenominator(demoniator);
+      assertThat(cn.toString(), cn.isCyclic(), is(true));
+    });
   }
 
 }

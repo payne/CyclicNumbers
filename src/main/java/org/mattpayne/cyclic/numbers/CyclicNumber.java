@@ -4,6 +4,7 @@ public class CyclicNumber {
 
   private Long number;
   private int denominator;
+  private boolean verbose = false;
 
   public CyclicNumber(long l) {
     this.number = l;
@@ -53,13 +54,23 @@ public class CyclicNumber {
       if (mostSignificantDigits.length() > 100)
         break;
       cn = new CyclicNumber(Long.valueOf(mostSignificantDigits));
-      System.out.println(cn);
+      if (verbose) {
+        System.out.println(cn);
+      }
     } while (!cn.isCyclic());
     if (cn.isCyclic()) {
       number = cn.number;
     } else {
       number = null;
     }
+  }
+
+  public boolean isVerbose() {
+    return verbose;
+  }
+
+  public void setVerbose(boolean verbose) {
+    this.verbose = verbose;
   }
 
 }
